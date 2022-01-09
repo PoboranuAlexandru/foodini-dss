@@ -22,9 +22,6 @@ services:
       - foodini_network
     ports:
       - "5000:5000"
-    volumes:
-      - ./database.py:/foodini_backend/database.py
-
 
 volumes:
   db_data1: {}
