@@ -43,8 +43,6 @@ class FoodDelivery(global_db.Model):
         global_db.Integer, global_db.ForeignKey('Users.user_id'), nullable=False)
     canceled = global_db.Column(global_db.Boolean(), default=False)
     address = global_db.Column(global_db.String(255), nullable=False)
-    discount_id = global_db.Column(global_db.Integer, global_db.ForeignKey(
-        'Discounts.discount_id'), nullable=False)
     price = global_db.Column(global_db.Float(), nullable=False)
     delievered = global_db.Column(global_db.Boolean(), default=False)
 
