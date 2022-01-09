@@ -56,7 +56,6 @@ def register():
     hashed_password = hashlib.md5(payload['password'].encode()).hexdigest()
 
     user = Users(
-        first_name=payload['first_name'], last_name=payload['last_name'],
         address=payload['address'], email=payload['email'], password=hashed_password,
     )
 
