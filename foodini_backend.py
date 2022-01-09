@@ -6,6 +6,7 @@ from datetime import datetime
 import sys
 import hashlib
 import random
+import base64
 sys.path.append("..")
 
 
@@ -351,7 +352,7 @@ def add_restaurant():
             return Response(status=400)
 
     new_restaurant = Restaurant(
-        name=payload['name'], description=payload['description'], image=payload['image'])
+        name=payload['name'], description=payload['description'], image=base64.b64decode(payload['image']))
 
     db.session.add(new_restaurant)
 
