@@ -357,8 +357,8 @@ def add_restaurant():
 
     try:
         db.session.commit()
-    except:
-        return Response(status=409)
+    except Exception as e:
+        return Response(e, status=409)
 
     return jsonify(restaurant_id=new_restaurant.restaurant_id), 201
 
