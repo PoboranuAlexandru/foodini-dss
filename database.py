@@ -7,7 +7,8 @@ global_db = SQLAlchemy()
 
 class Users(global_db.Model):
     __tablename__ = 'Users'
-    user_id = global_db.Column(global_db.Integer, primary_key=True)
+    user_id = global_db.Column(
+        global_db.Integer, primary_key=True, autoincrement=True)
     address = global_db.Column(global_db.String(200), nullable=False)
     email = global_db.Column(global_db.String(100), unique=True)
     password = global_db.Column(global_db.String(100), nullable=False)
@@ -17,7 +18,8 @@ class Users(global_db.Model):
 
 class Restaurant(global_db.Model):
     __tablename__ = 'Restaurant'
-    restaurant_id = global_db.Column(global_db.Integer, primary_key=True)
+    restaurant_id = global_db.Column(
+        global_db.Integer, primary_key=True, autoincrement=True)
     name = global_db.Column(global_db.String(100))
     description = global_db.Column(global_db.String(100))
     image = global_db.Column(global_db.LargeBinary)
@@ -25,7 +27,8 @@ class Restaurant(global_db.Model):
 
 class Products(global_db.Model):
     __tablename__ = 'Products'
-    product_id = global_db.Column(global_db.Integer, primary_key=True)
+    product_id = global_db.Column(
+        global_db.Integer, primary_key=True, autoincrement=True)
     restaurant_id = global_db.Column(
         global_db.Integer, global_db.ForeignKey('Restaurant.restaurant_id'))
     name = global_db.Column(global_db.String(100))
