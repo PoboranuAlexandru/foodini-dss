@@ -343,7 +343,7 @@ def add_restaurant():
 
     fields = ['name', 'description']
 
-    if request.FILES["image"] is None:
+    if request.files["image"] is None:
         return Response(status=400)
 
     for field in fields:
@@ -354,7 +354,7 @@ def add_restaurant():
             return Response(status=400)
 
     new_restaurant = Restaurant(
-        name=payload['name'], description=payload['description'], image=request.FILES["image"])
+        name=payload['name'], description=payload['description'], image=request.files["image"])
 
     db.session.add(new_restaurant)
 
