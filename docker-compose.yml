@@ -1,0 +1,33 @@
+version: "3.9"
+
+services:
+  mysql:
+    hostname: mysql
+    image: mysql:5.7
+    volumes:
+      - db_data1:/var/lib/mysql
+      - ./mysql-init-files:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: restaurant
+    networks:
+      - foodini_network
+
+  foodini:
+    hostname: foodini
+    build: .
+    depends_on:
+      - mysql
+    networks:
+      - foodini_network
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./database.py:/foodini_backend/database.py
+
+
+volumes:
+  db_data1: {}
+
+networks:
+  foodini_network:
